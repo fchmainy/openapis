@@ -431,3 +431,5 @@ components:
           example: -142.28261413,53.28261413
 servers:
   - url: http://10.1.20.7/api
+  - url: http://10.1.20.8/api
+  - url: http://10.1.20.9/api
