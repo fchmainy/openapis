@@ -478,7 +478,7 @@ schemas:
 components:
   schemas:
     SuccessfulDateTimeJsonResponse:
-      type: array:
+      type: array
       description: the current time for the timezone requested in JSON format
       content:
         application/json:
