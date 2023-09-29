@@ -1,0 +1,546 @@
+openapi: 3.0.1
+info:
+  title: API Sentence Generator
+  description: list of attributes
+  version: v3
+paths:
+  /time:
+    get:
+      description: get current time for the client IP specific timezone
+      tags:
+        - timezone
+        - worldtimeapi
+      responses:
+        '200':
+          description: request the current time based on the ip of the request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/SuccessfulDateTimeJsonResponse"
+      servers:
+        - url: https://worldtimeapi.org/api/
+  /adjectives:
+    get:
+      description: List all adjectives
+      tags:
+        - adjectives
+      responses:
+        '200':
+          description: a list of adjectives with their index
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Adjectives"
+    post:
+      description: create an adjective
+      tags:
+        - adjectives
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+            example:
+              name: worried
+      responses:
+        '201':
+          description: adjective created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  id:
+                    type: integer
+                  name:
+                    type: string
+              example:
+                id: 4
+                name: worried
+  /adjectives/{id}:
+    get:
+      description: get a specific adjective
+      tags:
+        - adjectives
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id of the adjective to retrieve
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  id:
+                    type: integer
+                  name:
+                    type: string
+              example:
+                id: 4
+                name: worried
+    delete:
+      description: delete an adjective
+      tags:
+        - adjectives
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id of the adjective to retrieve
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Delete an Adjective
+          content:
+            application/json:
+              schema:
+                type: object
+              example: {}
+  /animals:
+    get:
+      description: List all animals
+      tags:
+        - animals
+      responses:
+        '200':
+          description: a list of animals with their index
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Animals"
+    post:
+      description: create an animal
+      tags:
+        - animals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+            example:
+              name: cat
+      responses:
+        '201':
+          description: animal created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  id:
+                    type: integer
+                  name:
+                    type: string
+              example:
+                id: 4
+                name: cat
+  /animals/{id}:
+    get:
+      description: get a specific adjective
+      tags:
+        - animals
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id of the animal to retrieve
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  id:
+                    type: integer
+                  name:
+                    type: string
+              example:
+                id: 4
+                name: cat
+    delete:
+      description: delete an adjective
+      tags:
+        - animals
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id of the animal to retrieve
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Delete an Adjective
+          content:
+            application/json:
+              schema:
+                type: object
+              example: {}
+  /colors:
+    get:
+      description: List all colors
+      tags:
+        - colors
+      responses:
+        '200':
+          description: a list of colors with their index
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Colors"
+    post:
+      description: create a color
+      tags:
+        - colors
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+            example:
+              name: blue
+      responses:
+        '201':
+          description: color created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  id:
+                    type: integer
+                  name:
+                    type: string
+              example:
+                id: 4
+                name: blue
+  /colors/{id}:
+    get:
+      description: get a specific color
+      tags:
+        - colors
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id of the color to retrieve
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  id:
+                    type: integer
+                  name:
+                    type: string
+              example:
+                id: 4
+                name: blue
+    delete:
+      description: delete a color
+      tags:
+        - colors
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id of the color to retrieve
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Delete a color
+          content:
+            application/json:
+              schema:
+                type: object
+              example: {}
+  /locations:
+    get:
+      description: List all locations
+      tags:
+        - locations
+      responses:
+        '200':
+          description: a list of locations with their index
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Locations"
+    post:
+      description: create a location
+      tags:
+        - locations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                coordinates:
+                  type: array
+                  items:
+                    type: integer
+                    format: int64
+            example:
+              name: lake
+              coordinates: -142.28261413,53.28261413
+      responses:
+        '201':
+          description: location created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  coordinates:
+                    type: array
+                    items:
+                      type: integer
+                      format: int64
+              example:
+                id: 4
+                name: lake
+                coordinates: -142.28261413,53.28261413
+  /locations/{id}:
+    get:
+      description: get a specific location
+      tags:
+        - locations
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id of the location to retrieve
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  coordinates:
+                    type: array
+                    items:
+                      type: integer
+                      format: int64
+              example:
+                id: 4
+                name: lake
+                coordinates: -142.28261413,53.28261413
+    delete:
+      description: delete a location
+      tags:
+        - locations
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: id of the location to retrieve
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Delete a Location
+          content:
+            application/json:
+              schema:
+                type: object
+              example: {}
+
+schemas:
+  DateTimeJsonResponse:
+    required:
+      - abbreviation
+      - client_ip
+      - datetime
+      - day_of_week
+      - day_of_year
+      - dst
+      - dst_offset
+      - timezone
+      - unixtime
+      - utc_datetime
+      - utc_offset
+      - week_number
+    properties:
+      abbreviation:
+        type: string
+        description: >-
+            the abbreviated name of the timezone
+      client_ip:
+        type: string
+        description: >-
+            the IP of the client making the request
+      datetime:
+        type: string
+        description: >-
+            an ISO8601-valid string representing
+            the current, local date/time
+      day_of_week:
+        type: integer
+        description: >-
+            current day number of the week, where sunday is 0
+      day_of_year:
+        type: integer
+        description: >-
+            ordinal date of the current year
+      dst:
+        type: boolean
+        description: >-
+            flag indicating whether the local
+            time is in daylight savings
+      dst_from:
+        type: string
+        description: >-
+            an ISO8601-valid string representing
+            the datetime when daylight savings
+            started for this timezone
+      dst_offset:
+        type: integer
+        description: >-
+            the difference in seconds between the current local
+            time and daylight saving time for the location
+      dst_until:
+        type: string
+        description: >-
+            an ISO8601-valid string representing
+            the datetime when daylight savings
+            will end for this timezone
+      raw_offset:
+        type: integer
+        description: >-
+            the difference in seconds between the current local time
+            and the time in UTC, excluding any daylight saving difference
+            (see dst_offset)
+      timezone:
+        type: string
+        description: >-
+            timezone in `Area/Location` or
+            `Area/Location/Region` format
+      unixtime:
+        type: integer
+        description: >-
+            number of seconds since the Epoch
+      utc_datetime:
+        type: string
+        description: >-
+            an ISO8601-valid string representing
+            the current date/time in UTC
+      utc_offset:
+        type: string
+        description: >-
+            an ISO8601-valid string representing
+            the offset from UTC
+      week_number:
+        type: integer
+        description: >-
+            the current week number
+            
+components:
+  schemas:
+    SuccessfulDateTimeJsonResponse:
+      type: array:
+      description: the current time for the timezone requested in JSON format
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/DateTimeJsonResponse"
+    Adjectives:
+      type: array
+      items:
+        required:
+          - name
+        properties:
+          id:
+            type: integer
+            format: int64
+            example: 1
+          name:
+            type: string
+            example: worried
+    Animals:
+      type: array
+      items:
+        required:
+          - name
+        properties:
+          id:
+            type: integer
+            format: int64
+            example: 1
+          name:
+            type: string
+            example: cat
+    Colors:
+      type: array
+      items:
+        required:
+          - name
+        properties:
+          id:
+            type: integer
+            format: int64
+            example: 1
+          name:
+            type: string
+            example: blue
+    Locations:
+      required:
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          example: lake
+        coordinates:
+          type: array
+          items:
+            type: integer
+            format: int64
+          example: -142.28261413,53.28261413
+servers:
+  - url: http://10.1.20.7/api
+  - url: http://10.1.20.8/api
+  - url: http://10.1.20.9/api
