@@ -4,7 +4,7 @@ info:
   description: list of attributes
   version: v3
 paths:
-  /time:
+  /ip:
     get:
       description: get current time for the client IP specific timezone
       tags:
