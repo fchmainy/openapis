@@ -13,10 +13,7 @@ paths:
       responses:
         '200':
           description: request the current time based on the ip of the request.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/responses/SuccessfulDateTimeJsonResponse"
+          $ref: "#/components/responses/SuccessfulDateTimeJsonResponse"
       servers:
         - url: https://worldtimeapi.org/api/
   /adjectives:
