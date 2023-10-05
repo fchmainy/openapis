@@ -9,7 +9,6 @@ paths:
       description: get current time for the client IP specific timezone
       tags:
         - timezone
-        - worldtimeapi
       responses:
         '200':
           description: request the current time based on the ip of the request.
