@@ -18,6 +18,20 @@ paths:
                 $ref: "#/components/responses/SuccessfulDateTimeJsonResponse"
       servers:
         - url: https://worldtimeapi.org/api/
+  /time:
+    get:
+      description: get current time for the client IP specific timezone
+      tags:
+        - timezone
+      responses:
+        '200':
+          description: request the current time based on the ip of the request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/SuccessfulDateTimeJsonResponse"
+      servers:
+        - url: https://worldtimeapi.org/api/  
   /adjectives:
     get:
       description: List all adjectives
